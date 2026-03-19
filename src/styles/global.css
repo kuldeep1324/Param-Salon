@@ -1,0 +1,37 @@
+/* ===== PARAM SALON GLOBAL THEME ===== */
+
+:root {
+  --bg-primary: #000000;
+  --bg-secondary: #111111;
+  --bg-card: #1a1a1a;
+
+  --text-primary: #ffffff;
+  --text-secondary: #b3b3b3;
+
+  --accent: #facc15; /* gold */
+  --accent-hover: #fde047;
+
+  --border-color: #2a2a2a;
+}
+
+/* Apply base styles */
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: "Poppins", sans-serif;
+}
+
+/* Utility classes */
+
+.bg-primary { background: var(--bg-primary); }
+.bg-secondary { background: var(--bg-secondary); }
+.bg-card { background: var(--bg-card); }
+
+.text-primary { color: var(--text-primary); }
+.text-secondary { color: var(--text-secondary); }
+
+.accent { color: var(--accent); }
+.bg-accent { background: var(--accent); }
+
+.border-theme { border-color: var(--border-color); }
