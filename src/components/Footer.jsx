@@ -1,29 +1,13 @@
 function Footer() {
   return (
-    <footer className="bg-primary text-textPrimary pt-16 pb-8 border-t border-borderTheme">
+    <footer className="bg-primary text-textPrimary pt-14 pb-8 border-t border-borderTheme">
 
-      <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-12">
+      {/* 🔹 Top Section */}
+      <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-10 items-start">
 
-        {/* ⭐ Brand */}
+        {/* 📍 LEFT — Address */}
         <div>
-          <h2 className="text-3xl font-bold text-accent mb-4">
-            PARAM SALON
-          </h2>
-
-          <p className="text-textSecondary leading-relaxed mb-6">
-            Premium grooming and modern styling for men. 
-            Experience luxury haircuts, beard care, and skin services 
-            in a clean and professional environment.
-          </p>
-
-          <p className="text-textSecondary text-sm">
-            Gwalior’s Trusted Salon Since 2020
-          </p>
-        </div>
-
-        {/* 📍 Address */}
-        <div>
-          <h3 className="text-xl font-semibold mb-4 text-accent">
+          <h3 className="text-accent text-xl font-bold mb-4">
             Visit Us
           </h3>
 
@@ -34,75 +18,42 @@ function Footer() {
           </p>
         </div>
 
-        {/* ⏰ Hours */}
-        <div>
-          <h3 className="text-xl font-semibold mb-4 text-accent">
-            Opening Hours
-          </h3>
-
-          <ul className="text-textSecondary space-y-1">
-            <li>Wed — 8:30 AM – 10 PM</li>
-            <li>Thu — Closed</li>
-            <li>Fri — 8:30 AM – 10 PM</li>
-            <li>Sat — 8:30 AM – 10 PM</li>
-            <li>Sun — 8:30 AM – 10 PM</li>
-            <li>Mon — 8:30 AM – 10 PM</li>
-            <li>Tue — 8:30 AM – 10 PM</li>
-          </ul>
-        </div>
-
-        {/* 📞 Contact */}
-        <div>
-          <h3 className="text-xl font-semibold mb-4 text-accent">
-            Contact
-          </h3>
-
-          <p className="text-textSecondary mb-3">
-            📞 
-            <a
-              href="tel:09993962915"
-              className="ml-2 text-accent hover:underline"
-            >
-              09993962915
-            </a>
+        {/* ⭐ CENTER — Copyright */}
+        <div className="text-center">
+          <p className="text-textSecondary leading-relaxed">
+            Designed for premium grooming
           </p>
 
-          <p className="text-textSecondary mb-4">
-            📷 
-            <a
-              href="https://www.instagram.com/param_salon_gwalior/"
-              target="_blank"
-              rel="noreferrer"
-              className="ml-2 text-accent hover:underline"
-            >
-              @param_salon_gwalior
-            </a>
+          <p className="mt-2 text-textSecondary">
+            © {new Date().getFullYear()} Param Salon.
+            All rights reserved.
           </p>
-
-          {/* ⭐ CTA Button */}
-          <a
-            href="tel:09993962915"
-            className="inline-block bg-accent text-black px-6 py-2 rounded-full font-semibold hover:bg-accentHover transition"
-          >
-            Call Now
-          </a>
+          <p className="mt-2 text-textSecondary">
+             ....Made With 💖 & ☕....
+          </p>
         </div>
 
-      </div>
+        {/* 📞 RIGHT — Contact */}
+       <div className="text-right">
+  <h3 className="text-accent text-xl font-bold mb-4">
+    Contact
+  </h3>
 
-      {/* Divider */}
-      <div className="max-w-7xl mx-auto mt-12 border-t border-borderTheme"></div>
+  <p className="mb-2">
+    📞 09993962915
+  </p>
 
-      {/* Bottom */}
-      <div className="max-w-7xl mx-auto px-6 mt-6 flex flex-col md:flex-row justify-between items-center text-textSecondary text-sm">
+  <p className="mb-4">
+    📷 @param_salon_gwalior
+  </p>
 
-        <p>
-          © {new Date().getFullYear()} Param Salon. All rights reserved.
-        </p>
-
-        <p className="mt-3 md:mt-0">
-          Designed with ❤️ for premium grooming
-        </p>
+  <a
+    href="tel:09993962915"
+    className="inline-block ml-auto bg-accent text-black px-6 py-2 rounded-full font-semibold hover:bg-accentHover transition"
+  >
+    Call Now
+  </a>
+</div>
 
       </div>
 

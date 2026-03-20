@@ -1,19 +1,15 @@
-import video from "../assets/Param-Salon.mp4";
+import HeroSection from '../assets/HeroSection.png';
 
 function Hero() {
   return (
-    <section className="relative h-screen w-full overflow-hidden">
+    <section className="relative h-screen w-full overflow-hidden pt-20">
 
-      {/* 🎬 Background Video */}
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute w-full h-full object-cover"
-      >
-        <source src={video} type="video/mp4" />
-      </video>
+      {/* 🖼️ Background Image */}
+      <img
+        src={HeroSection}
+        alt="Param Salon"
+        className="absolute w-full h-full object-cover" paddingUpper= "10px"
+      />
 
       {/* 🌑 Dark Overlay */}
       <div className="absolute inset-0 bg-black/70"></div>

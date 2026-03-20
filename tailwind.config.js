@@ -6,6 +6,10 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+  body: ['Poppins', 'sans-serif'],        // body text
+  heading: ['Playfair Display', 'serif'], // headings
+},
       colors: {
         primary: "#000000",
         secondary: "#111111",

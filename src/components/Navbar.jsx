@@ -1,10 +1,24 @@
-import { useState } from "react";
 import logo from "../assets/logo.png";
+import { useState, useEffect } from "react";
 function Navbar() {
+  const [scrolled, setScrolled] = useState(false);
+
+useEffect(() => {
+  const handleScroll = () => {
+    setScrolled(window.scrollY > 50);
+  };
+
+  window.addEventListener("scroll", handleScroll);
+
+  return () => window.removeEventListener("scroll", handleScroll);
+}, []);
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav className="fixed w-full z-50 bg-black/80 backdrop-blur-md text-white">
+    <nav className="fixed top-0 w-full z-50 
+bg-white/10 backdrop-blur
+border-b border-white/20 
+shadow-lg">
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
         
         {/* Logo */}
@@ -15,13 +29,31 @@ function Navbar() {
         />
 
         {/* Desktop Menu */}
-        <ul className="hidden md:flex gap-8 text-lg font-medium">
-          <li className="hover:text-yellow-400 cursor-pointer">Home</li>
-          <li className="hover:text-yellow-400 cursor-pointer">Services</li>
-          <li className="hover:text-yellow-400 cursor-pointer">Gallery</li>
-          <li className="hover:text-yellow-400 cursor-pointer">About</li>
-          <li className="hover:text-yellow-400 cursor-pointer">Contact</li>
-        </ul>
+       <ul
+  className={`hidden md:flex gap-8 text-lg font-medium transition-colors duration-300 ${
+    scrolled ? "text-white" : "text-black"
+  }`}
+>
+  <li className="hover:text-yellow-400 cursor-pointer font-semibold">
+    Home
+  </li>
+
+  <li className="hover:text-yellow-400 cursor-pointer font-semibold">
+    Services
+  </li>
+
+  <li className="hover:text-yellow-400 cursor-pointer font-semibold">
+    Gallery
+  </li>
+
+  <li className="hover:text-yellow-400 cursor-pointer font-semibold">
+    About
+  </li>
+
+  <li className="hover:text-yellow-400 cursor-pointer font-semibold">
+    Contact
+  </li>
+</ul>
 
         {/* Book Button */}
         <button className="hidden md:block bg-yellow-400 text-black px-5 py-2 rounded-full font-semibold hover:bg-yellow-300 transition">
