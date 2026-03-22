@@ -1,84 +1,65 @@
 import logo from "../assets/logo.png";
 import { useState, useEffect } from "react";
+
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
 
-useEffect(() => {
-  const handleScroll = () => {
-    setScrolled(window.scrollY > 50);
-  };
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
 
-  window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
-  return () => window.removeEventListener("scroll", handleScroll);
-}, []);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 w-full z-50 
-bg-white/10 backdrop-blur
-border-b border-white/20 
-shadow-lg">
-      <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-        
-        {/* Logo */}
+    <nav className="fixed top-0 z-50 w-full border-b border-white/20 bg-black/45 backdrop-blur-md">
+      <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-3 sm:px-6">
         <img
-        src={logo}
-        alt="Param Salon Logo"
-        className="h-12 w-12 object-cover rounded-full border-2 border-accent"
+          src={logo}
+          alt="Param Salon Logo"
+          className="h-10 w-10 rounded-full border-2 border-accent object-cover sm:h-12 sm:w-12"
         />
 
-        {/* Desktop Menu */}
-       <ul
-  className={`hidden md:flex gap-8 text-lg font-medium transition-colors duration-300 ${
-    scrolled ? "text-white" : "text-black"
-  }`}
->
-  <li className="hover:text-yellow-400 cursor-pointer font-semibold">
-    Home
-  </li>
+        <ul
+          className={`hidden gap-6 text-base font-medium transition-colors duration-300 md:flex lg:gap-8 ${
+            scrolled ? "text-white" : "text-slate-100"
+          }`}
+        >
+          <li className="cursor-pointer font-semibold hover:text-yellow-400">Home</li>
+          <li className="cursor-pointer font-semibold hover:text-yellow-400">Services</li>
+          <li className="cursor-pointer font-semibold hover:text-yellow-400">Gallery</li>
+          <li className="cursor-pointer font-semibold hover:text-yellow-400">About</li>
+          <li className="cursor-pointer font-semibold hover:text-yellow-400">Contact</li>
+        </ul>
 
-  <li className="hover:text-yellow-400 cursor-pointer font-semibold">
-    Services
-  </li>
-
-  <li className="hover:text-yellow-400 cursor-pointer font-semibold">
-    Gallery
-  </li>
-
-  <li className="hover:text-yellow-400 cursor-pointer font-semibold">
-    About
-  </li>
-
-  <li className="hover:text-yellow-400 cursor-pointer font-semibold">
-    Contact
-  </li>
-</ul>
-
-        {/* Book Button */}
-        <button className="hidden md:block bg-yellow-400 text-black px-5 py-2 rounded-full font-semibold hover:bg-yellow-300 transition">
+        <button className="hidden rounded-full bg-yellow-400 px-5 py-2 font-semibold text-black transition hover:bg-yellow-300 md:block">
           Book Now
         </button>
 
-        {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-2xl"
+          type="button"
+          aria-label="Toggle menu"
+          className="rounded-lg border border-white/40 px-3 py-1.5 text-xl text-white md:hidden"
           onClick={() => setMenuOpen(!menuOpen)}
         >
-          ☰
+          {menuOpen ? "✕" : "☰"}
         </button>
       </div>
 
-      {/* Mobile Menu */}
       {menuOpen && (
-        <div className="md:hidden bg-black px-6 pb-6 space-y-4 text-lg">
-          <p className="hover:text-yellow-400 cursor-pointer">Home</p>
-          <p className="hover:text-yellow-400 cursor-pointer">Services</p>
-          <p className="hover:text-yellow-400 cursor-pointer">Gallery</p>
-          <p className="hover:text-yellow-400 cursor-pointer">About</p>
-          <p className="hover:text-yellow-400 cursor-pointer">Contact</p>
+        <div className="space-y-4 border-t border-white/15 bg-black/95 px-4 pb-5 pt-4 text-base text-white md:hidden sm:px-6">
+          <p className="cursor-pointer hover:text-yellow-400">Home</p>
+          <p className="cursor-pointer hover:text-yellow-400">Services</p>
+          <p className="cursor-pointer hover:text-yellow-400">Gallery</p>
+          <p className="cursor-pointer hover:text-yellow-400">About</p>
+          <p className="cursor-pointer hover:text-yellow-400">Contact</p>
 
-          <button className="w-full bg-yellow-400 text-black py-2 rounded-full font-semibold">
+          <button className="w-full rounded-full bg-yellow-400 py-2 font-semibold text-black">
             Book Now
           </button>
         </div>

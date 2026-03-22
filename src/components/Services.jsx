@@ -9,28 +9,28 @@ function Services() {
   ];
 
   return (
-    <section className="bg-black text-white py-20 px-6">
+    <section className="bg-black px-4 py-14 text-white sm:px-6 sm:py-20">
       
-      <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">
+      <h2 className="mb-10 text-center text-3xl font-bold sm:mb-12 md:mb-16 md:text-5xl">
         Our Services
       </h2>
 
-      <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
+      <div className="mx-auto grid max-w-6xl grid-cols-1 gap-5 sm:grid-cols-2 md:gap-8 lg:grid-cols-3">
         
         {services.map((service, index) => (
           <div
             key={index}
-            className="bg-gray-900 p-8 rounded-2xl border border-gray-800 hover:border-yellow-400 hover:scale-105 transition duration-300"
+            className="rounded-2xl border border-gray-800 bg-gray-900 p-5 transition duration-300 hover:border-yellow-400 sm:p-6 lg:p-8"
           >
-            <h3 className="text-2xl font-semibold mb-4">
+            <h3 className="mb-3 text-xl font-semibold sm:mb-4 sm:text-2xl">
               {service.name}
             </h3>
 
-            <p className="text-yellow-400 text-xl mb-6">
+            <p className="mb-5 text-lg text-yellow-400 sm:mb-6 sm:text-xl">
               {service.price}
             </p>
 
-            <button className="bg-yellow-400 text-black px-6 py-2 rounded-full font-semibold hover:bg-yellow-300 transition">
+            <button className="rounded-full bg-yellow-400 px-5 py-2 font-semibold text-black transition hover:bg-yellow-300 sm:px-6">
               Book Now
             </button>
           </div>

@@ -1,9 +1,9 @@
 function Footer() {
   return (
-    <footer className="bg-primary text-textPrimary pt-14 pb-8 border-t border-borderTheme">
+    <footer className="border-t border-borderTheme bg-primary pb-8 pt-12 text-textPrimary sm:pt-14">
 
       {/* 🔹 Top Section */}
-      <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-10 items-start">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 items-start gap-10 px-4 sm:px-6 md:grid-cols-3">
 
         {/* 📍 LEFT — Address */}
         <div>
@@ -19,7 +19,7 @@ function Footer() {
         </div>
 
         {/* ⭐ CENTER — Copyright */}
-        <div className="text-center">
+        <div className="text-left md:text-center">
           <p className="text-textSecondary leading-relaxed">
             Designed for premium grooming
           </p>
@@ -34,26 +34,26 @@ function Footer() {
         </div>
 
         {/* 📞 RIGHT — Contact */}
-       <div className="text-right">
-  <h3 className="text-accent text-xl font-bold mb-4">
-    Contact
-  </h3>
+        <div className="text-left md:text-right">
+          <h3 className="mb-4 text-xl font-bold text-accent">
+            Contact
+          </h3>
 
-  <p className="mb-2">
-    📞 09993962915
-  </p>
+          <p className="mb-2">
+            📞 09993962915
+          </p>
 
-  <p className="mb-4">
-    📷 @param_salon_gwalior
-  </p>
+          <p className="mb-4">
+            📷 @param_salon_gwalior
+          </p>
 
-  <a
-    href="tel:09993962915"
-    className="inline-block ml-auto bg-accent text-black px-6 py-2 rounded-full font-semibold hover:bg-accentHover transition"
-  >
-    Call Now
-  </a>
-</div>
+          <a
+            href="tel:09993962915"
+            className="inline-block rounded-full bg-accent px-6 py-2 font-semibold text-black transition hover:bg-accentHover md:ml-auto"
+          >
+            Call Now
+          </a>
+        </div>
 
       </div>
 
