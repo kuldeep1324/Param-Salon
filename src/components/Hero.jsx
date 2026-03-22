@@ -22,7 +22,7 @@ function Hero() {
         </h1>
 
         <p className="mb-7 max-w-2xl text-base text-gray-300 sm:text-lg md:mb-8 md:text-xl">
-          The Ultimate Hair Experience, Premium Grooming & Modern Hair Studio
+          Precision Haircraft, Refined Grooming, and Contemporary Salon Care
         </p>
 
         <button className="rounded-full bg-accent px-6 py-3 text-base font-semibold text-black transition hover:bg-accentHover sm:px-8 sm:py-4 sm:text-lg">
