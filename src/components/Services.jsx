@@ -9,7 +9,7 @@ function Services() {
   ];
 
   return (
-    <section className="bg-black px-4 py-14 text-white sm:px-6 sm:py-20">
+    <section id="services" className="bg-black px-4 py-14 text-white sm:px-6 sm:py-20">
       
       <h2 className="mb-10 text-center text-3xl font-bold sm:mb-12 md:mb-16 md:text-5xl">
         Our Services
@@ -30,9 +30,16 @@ function Services() {
               {service.price}
             </p>
 
-            <button className="rounded-full bg-yellow-400 px-5 py-2 font-semibold text-black transition hover:bg-yellow-300 sm:px-6">
+            <a
+              href={`https://wa.me/919993962915?text=${encodeURIComponent(
+                `Hi Param Salon, I want to book ${service.name}.`
+              )}`}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-block rounded-full bg-yellow-400 px-5 py-2 font-semibold text-black transition hover:bg-yellow-300 sm:px-6"
+            >
               Book Now
-            </button>
+            </a>
           </div>
         ))}
 

@@ -3,6 +3,13 @@ import { useState, useEffect } from "react";
 
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const navLinks = [
+    { label: "Home", href: "#home" },
+    { label: "Services", href: "#services" },
+    { label: "Gallery", href: "#gallery" },
+    { label: "Location", href: "#location" },
+    { label: "Contact", href: "#contact" },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,16 +37,23 @@ function Navbar() {
             scrolled ? "text-white" : "text-slate-100"
           }`}
         >
-          <li className="cursor-pointer font-semibold hover:text-yellow-400">Home</li>
-          <li className="cursor-pointer font-semibold hover:text-yellow-400">Services</li>
-          <li className="cursor-pointer font-semibold hover:text-yellow-400">Gallery</li>
-          <li className="cursor-pointer font-semibold hover:text-yellow-400">About</li>
-          <li className="cursor-pointer font-semibold hover:text-yellow-400">Contact</li>
+          {navLinks.map((link) => (
+            <li key={link.label}>
+              <a className="cursor-pointer font-semibold hover:text-yellow-400" href={link.href}>
+                {link.label}
+              </a>
+            </li>
+          ))}
         </ul>
 
-        <button className="hidden rounded-full bg-yellow-400 px-5 py-2 font-semibold text-black transition hover:bg-yellow-300 md:block">
+        <a
+          href="https://wa.me/919993962915?text=Hi%20Param%20Salon%2C%20I%20want%20to%20book%20an%20appointment."
+          target="_blank"
+          rel="noreferrer"
+          className="hidden rounded-full bg-yellow-400 px-5 py-2 font-semibold text-black transition hover:bg-yellow-300 md:block"
+        >
           Book Now
-        </button>
+        </a>
 
         <button
           type="button"
@@ -53,15 +67,25 @@ function Navbar() {
 
       {menuOpen && (
         <div className="space-y-4 border-t border-white/15 bg-black/95 px-4 pb-5 pt-4 text-base text-white md:hidden sm:px-6">
-          <p className="cursor-pointer hover:text-yellow-400">Home</p>
-          <p className="cursor-pointer hover:text-yellow-400">Services</p>
-          <p className="cursor-pointer hover:text-yellow-400">Gallery</p>
-          <p className="cursor-pointer hover:text-yellow-400">About</p>
-          <p className="cursor-pointer hover:text-yellow-400">Contact</p>
+          {navLinks.map((link) => (
+            <a
+              key={link.label}
+              className="block cursor-pointer hover:text-yellow-400"
+              href={link.href}
+              onClick={() => setMenuOpen(false)}
+            >
+              {link.label}
+            </a>
+          ))}
 
-          <button className="w-full rounded-full bg-yellow-400 py-2 font-semibold text-black">
+          <a
+            href="https://wa.me/919993962915?text=Hi%20Param%20Salon%2C%20I%20want%20to%20book%20an%20appointment."
+            target="_blank"
+            rel="noreferrer"
+            className="block w-full rounded-full bg-yellow-400 py-2 text-center font-semibold text-black"
+          >
             Book Now
-          </button>
+          </a>
         </div>
       )}
     </nav>

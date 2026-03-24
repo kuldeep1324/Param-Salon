@@ -1,6 +1,6 @@
 function Footer() {
   return (
-    <footer className="border-t border-borderTheme bg-primary pb-8 pt-12 text-textPrimary sm:pt-14">
+    <footer id="contact" className="border-t border-borderTheme bg-primary pb-8 pt-12 text-textPrimary sm:pt-14">
 
       {/* 🔹 Top Section */}
       <div className="mx-auto grid max-w-7xl grid-cols-1 items-start gap-10 px-4 sm:px-6 md:grid-cols-3">
@@ -39,13 +39,18 @@ function Footer() {
             Contact
           </h3>
 
-          <p className="mb-2">
+          <a className="mb-2 block" href="tel:09993962915">
             📞 09993962915
-          </p>
+          </a>
 
-          <p className="mb-4">
+          <a
+            className="mb-4 block"
+            href="https://www.instagram.com/param_salon_gwalior"
+            target="_blank"
+            rel="noreferrer"
+          >
             📷 @param_salon_gwalior
-          </p>
+          </a>
 
           <a
             href="tel:09993962915"

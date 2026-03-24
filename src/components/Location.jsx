@@ -1,6 +1,6 @@
 function Location() {
   return (
-    <section className="bg-secondary text-textPrimary py-20 px-6">
+    <section id="location" className="bg-secondary text-textPrimary py-20 px-6">
 
       <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">
         Find Us

@@ -9,7 +9,7 @@ function Gallery() {
   const images = [img1, img2, img3, img4, img5, img6];
 
   return (
-    <section className="bg-primary px-4 py-14 text-textPrimary sm:px-6 sm:py-20">
+    <section id="gallery" className="bg-primary px-4 py-14 text-textPrimary sm:px-6 sm:py-20">
 
       <h2 className="mb-10 text-center text-3xl font-bold sm:mb-12 md:mb-16 md:text-5xl">
         Our Work

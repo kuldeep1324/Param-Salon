@@ -2,7 +2,7 @@ import HeroSection from '../assets/HeroSection.png';
 
 function Hero() {
   return (
-    <section className="relative min-h-[80vh] w-full overflow-hidden pt-16 sm:min-h-screen sm:pt-20">
+    <section id="home" className="relative min-h-[80vh] w-full overflow-hidden pt-16 sm:min-h-screen sm:pt-20">
 
       {/* 🖼️ Background Image */}
       <img
@@ -25,9 +25,14 @@ function Hero() {
           Precision Haircraft, Refined Grooming, and Contemporary Salon Care
         </p>
 
-        <button className="rounded-full bg-accent px-6 py-3 text-base font-semibold text-black transition hover:bg-accentHover sm:px-8 sm:py-4 sm:text-lg">
+        <a
+          href="https://wa.me/919993962915?text=Hi%20Param%20Salon%2C%20I%20want%20to%20book%20an%20appointment."
+          target="_blank"
+          rel="noreferrer"
+          className="rounded-full bg-accent px-6 py-3 text-base font-semibold text-black transition hover:bg-accentHover sm:px-8 sm:py-4 sm:text-lg"
+        >
           Book Appointment
-        </button>
+        </a>
 
       </div>
     </section>
