@@ -17,6 +17,10 @@ function Hero() {
       {/* ✨ Content */}
       <div className="relative z-10 flex h-full flex-col items-center justify-center px-5 py-16 text-center text-white sm:px-6">
 
+        <p className="mb-4 rounded-full border border-accent/40 bg-black/40 px-4 py-1 text-xs font-semibold uppercase tracking-[0.15em] text-accent sm:text-sm">
+          Param Signature Grooming
+        </p>
+
         <h1 className="mb-4 text-4xl font-bold leading-tight sm:text-5xl md:mb-6 md:text-7xl">
           Param Salon
         </h1>
@@ -33,6 +37,18 @@ function Hero() {
         >
           Book Appointment
         </a>
+
+        <div className="mt-7 grid grid-cols-1 gap-3 text-sm sm:grid-cols-3 sm:gap-4 sm:text-base">
+          <div className="rounded-full border border-white/25 bg-white/10 px-4 py-2 backdrop-blur">
+            4.9 Client Rating
+          </div>
+          <div className="rounded-full border border-white/25 bg-white/10 px-4 py-2 backdrop-blur">
+            Open Daily 9 AM - 10 PM
+          </div>
+          <div className="rounded-full border border-white/25 bg-white/10 px-4 py-2 backdrop-blur">
+            Premium Product Line
+          </div>
+        </div>
 
       </div>
     </section>
