@@ -1,8 +1,10 @@
 import logo from "../assets/logo.png";
 import { useState, useEffect } from "react";
+import BookingModal from "./BookingModal";
 
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [bookingModalOpen, setBookingModalOpen] = useState(false);
   const navLinks = [
     { label: "Home", href: "#home" },
     { label: "Services", href: "#services" },
@@ -46,14 +48,12 @@ function Navbar() {
           ))}
         </ul>
 
-        <a
-          href="https://wa.me/919993962915?text=Hi%20Param%20Salon%2C%20I%20want%20to%20book%20an%20appointment."
-          target="_blank"
-          rel="noreferrer"
-          className="hidden rounded-full bg-yellow-400 px-5 py-2 font-semibold text-black transition hover:bg-yellow-300 md:block"
+        <button
+          onClick={() => setBookingModalOpen(true)}
+          className="hidden rounded-full bg-accent px-4 py-2.5 font-semibold text-black shadow-lg shadow-accent/30 transition duration-300 hover:bg-accentHover hover:shadow-accent/50 hover:scale-105 md:block cursor-pointer"
         >
           Book Now
-        </a>
+        </button>
 
         <button
           type="button"
@@ -78,16 +78,16 @@ function Navbar() {
             </a>
           ))}
 
-          <a
-            href="https://wa.me/919993962915?text=Hi%20Param%20Salon%2C%20I%20want%20to%20book%20an%20appointment."
-            target="_blank"
-            rel="noreferrer"
-            className="block w-full rounded-full bg-yellow-400 py-2 text-center font-semibold text-black"
+          <button
+            onClick={() => setBookingModalOpen(true)}
+            className="block w-full rounded-full bg-accent py-2.5 text-center font-semibold text-black shadow-lg shadow-accent/30 transition duration-300 hover:bg-accentHover hover:shadow-accent/50 cursor-pointer"
           >
             Book Now
-          </a>
+          </button>
         </div>
       )}
+
+      <BookingModal isOpen={bookingModalOpen} onClose={() => setBookingModalOpen(false)} />
     </nav>
   );
 }

@@ -1,4 +1,8 @@
+import { useState } from "react";
+import BookingModal from "./BookingModal";
+
 function PromoBanner() {
+  const [bookingModalOpen, setBookingModalOpen] = useState(false);
   const highlights = [
     { title: "4.9/5 Rated", detail: "Loved by regular clients in Gwalior" },
     { title: "Same-Day Slots", detail: "Quick appointments for busy schedules" },
@@ -6,7 +10,8 @@ function PromoBanner() {
   ];
 
   return (
-    <section className="relative overflow-hidden bg-secondary px-4 py-14 text-textPrimary sm:px-6 sm:py-16">
+    <>
+      <section className="relative overflow-hidden bg-secondary px-4 py-14 text-textPrimary sm:px-6 sm:py-16">
       <div className="pointer-events-none absolute -left-20 top-0 h-56 w-56 rounded-full bg-accent/20 blur-3xl" />
       <div className="pointer-events-none absolute -right-20 bottom-0 h-56 w-56 rounded-full bg-yellow-300/10 blur-3xl" />
 
@@ -21,14 +26,12 @@ function PromoBanner() {
             </h2>
           </div>
 
-          <a
-            href="https://wa.me/919993962915?text=Hi%20Param%20Salon%2C%20please%20share%20available%20premium%20grooming%20slots."
-            target="_blank"
-            rel="noreferrer"
-            className="inline-block rounded-full bg-accent px-6 py-3 text-center font-semibold text-black transition hover:bg-accentHover"
+          <button
+            onClick={() => setBookingModalOpen(true)}
+            className="inline-block rounded-full bg-accent px-6 py-3 text-center font-semibold text-black shadow-lg shadow-accent/30 transition duration-300 hover:bg-accentHover hover:shadow-accent/50 cursor-pointer"
           >
             Check Available Slots
-          </a>
+          </button>
         </div>
 
         <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
@@ -41,6 +44,9 @@ function PromoBanner() {
         </div>
       </div>
     </section>
+
+    <BookingModal isOpen={bookingModalOpen} onClose={() => setBookingModalOpen(false)} />
+    </>
   );
 }
 

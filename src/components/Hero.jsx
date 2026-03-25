@@ -1,8 +1,12 @@
 import HeroSection from '../assets/HeroSection.png';
+import { useState } from 'react';
+import BookingModal from './BookingModal';
 
 function Hero() {
+  const [bookingModalOpen, setBookingModalOpen] = useState(false);
   return (
-    <section id="home" className="relative min-h-[80vh] w-full overflow-hidden pt-16 sm:min-h-screen sm:pt-20">
+    <>
+      <section id="home" className="relative min-h-[80vh] w-full overflow-hidden pt-16 sm:min-h-screen sm:pt-20">
 
       {/* 🖼️ Background Image */}
       <img
@@ -29,14 +33,12 @@ function Hero() {
           Precision Haircraft, Refined Grooming, and Contemporary Salon Care
         </p>
 
-        <a
-          href="https://wa.me/919993962915?text=Hi%20Param%20Salon%2C%20I%20want%20to%20book%20an%20appointment."
-          target="_blank"
-          rel="noreferrer"
-          className="rounded-full bg-accent px-6 py-3 text-base font-semibold text-black transition hover:bg-accentHover sm:px-8 sm:py-4 sm:text-lg"
+        <button
+          onClick={() => setBookingModalOpen(true)}
+          className="rounded-full bg-accent px-6 py-3 text-base font-semibold text-black shadow-lg shadow-accent/30 transition duration-300 hover:bg-accentHover hover:shadow-accent/50 hover:scale-105 sm:px-8 sm:py-4 sm:text-lg cursor-pointer"
         >
-          Book Appointment
-        </a>
+          Book Now
+        </button>
 
         <div className="mt-7 grid grid-cols-1 gap-3 text-sm sm:grid-cols-3 sm:gap-4 sm:text-base">
           <div className="rounded-full border border-white/25 bg-white/10 px-4 py-2 backdrop-blur">
@@ -52,6 +54,9 @@ function Hero() {
 
       </div>
     </section>
+
+    <BookingModal isOpen={bookingModalOpen} onClose={() => setBookingModalOpen(false)} />
+    </>
   );
 }
 
