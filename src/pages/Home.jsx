@@ -1,6 +1,5 @@
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
-import PromoBanner from "../components/PromoBanner";
 import Services from "../components/Services";
 import Gallery from "../components/Gallery";
 import Testimonials from "../components/Testimonials";
@@ -13,7 +12,6 @@ function Home() {
     <>
       <Navbar />
       <Hero />
-      <PromoBanner />
       <Services />
       <Gallery />
       <Testimonials />
