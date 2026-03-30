@@ -6,7 +6,7 @@ function Hero() {
   const [bookingModalOpen, setBookingModalOpen] = useState(false);
   return (
     <>
-      <section id="home" className="relative min-h-[80vh] w-full overflow-hidden pt-16 sm:min-h-screen sm:pt-20">
+      <section id="home" className="relative min-h-[80vh] w-full overflow-hidden pt-16 sm:min-h-screen">
 
       {/* 🖼️ Background Image */}
       <img
