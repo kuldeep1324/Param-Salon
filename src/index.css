@@ -2,22 +2,249 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ===== PREMIUM BASE STYLES ===== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 html {
-	scroll-behavior: smooth;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: #ffcc00 #111111;
 }
 
-@keyframes fadeUp {
-	from {
-		opacity: 0;
-		transform: translateY(16px);
-	}
-	to {
-		opacity: 1;
-		transform: translateY(0);
-	}
+::-webkit-scrollbar {
+  width: 6px;
 }
 
-section {
-	animation: fadeUp 0.7s ease both;
+::-webkit-scrollbar-track {
+  background: #050505;
 }
 
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #ffcc00, #ff9500);
+  border-radius: 3px;
+}
+
+body {
+  background-color: #050505;
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ===== SELECTION HIGHLIGHT ===== */
+
+::selection {
+  background: rgba(255, 204, 0, 0.3);
+  color: #ffffff;
+}
+
+::-moz-selection {
+  background: rgba(255, 204, 0, 0.3);
+  color: #ffffff;
+}
+
+/* ===== PREMIUM SECTION DIVIDER ===== */
+
+.section-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 204, 0, 0.3) 50%,
+    transparent 100%
+  );
+}
+
+/* ===== GLASS EFFECT ===== */
+
+.glass {
+  background: rgba(17, 17, 17, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-strong {
+  background: rgba(17, 17, 17, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ===== GOLD GRADIENT TEXT ===== */
+
+.text-gold-gradient {
+  background: linear-gradient(135deg, #ffcc00 0%, #ff9500 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ===== GOLD BUTTON ===== */
+
+.btn-gold {
+  background: linear-gradient(135deg, #ffcc00 0%, #ff9500 100%);
+  color: #050505;
+  font-weight: 600;
+  border-radius: 50px;
+  padding: 14px 36px;
+  font-size: 15px;
+  letter-spacing: 0.02em;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 20px rgba(255, 204, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-gold::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: left 0.6s;
+}
+
+.btn-gold:hover::before {
+  left: 100%;
+}
+
+.btn-gold:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 0 40px rgba(255, 204, 0, 0.35);
+}
+
+/* ===== OUTLINE BUTTON ===== */
+
+.btn-outline {
+  border: 1px solid rgba(255, 204, 0, 0.4);
+  color: #ffcc00;
+  font-weight: 500;
+  border-radius: 50px;
+  padding: 14px 36px;
+  font-size: 15px;
+  letter-spacing: 0.02em;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background: transparent;
+}
+
+.btn-outline:hover {
+  background: rgba(255, 204, 0, 0.1);
+  border-color: #ffcc00;
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(255, 204, 0, 0.15);
+}
+
+/* ===== SECTION HEADING ===== */
+
+.section-label {
+  display: inline-block;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #ffcc00;
+  padding: 8px 20px;
+  border: 1px solid rgba(255, 204, 0, 0.3);
+  border-radius: 50px;
+  background: rgba(255, 204, 0, 0.08);
+}
+
+/* ===== PREMIUM CARD ===== */
+
+.premium-card {
+  background: rgba(17, 17, 17, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.premium-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(255, 204, 0, 0.25);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(255, 204, 0, 0.12);
+}
+
+/* ===== GLOW BLOBS ===== */
+
+.glow-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+.glow-blob-gold {
+  background: radial-gradient(circle, rgba(255, 204, 0, 0.25) 0%, transparent 70%);
+}
+
+.glow-blob-orange {
+  background: radial-gradient(circle, rgba(255, 149, 0, 0.2) 0%, transparent 70%);
+}
+
+/* ===== CURSOR GLOW (desktop only) ===== */
+
+@media (hover: hover) and (pointer: fine) {
+  .cursor-glow {
+    position: fixed;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(
+      circle,
+      rgba(255, 204, 0, 0.06) 0%,
+      transparent 70%
+    );
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.3s ease;
+  }
+}
+
+/* ===== IMAGE SHINE EFFECT ===== */
+
+.shine-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.shine-effect::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transform: skewX(-25deg);
+  transition: left 0.6s ease;
+}
+
+.shine-effect:hover::after {
+  left: 125%;
+}

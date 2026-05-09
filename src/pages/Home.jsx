@@ -12,10 +12,24 @@ function Home() {
     <>
       <Navbar />
       <Hero />
+
+      {/* Section Divider */}
+      <div className="section-divider" />
+
       <Services />
+
+      <div className="section-divider" />
+
       <Gallery />
+
+      <div className="section-divider" />
+
       <Testimonials />
+
+      <div className="section-divider" />
+
       <Location />
+
       <FloatingContact />
       <Footer />
     </>

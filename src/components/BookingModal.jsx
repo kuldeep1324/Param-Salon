@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 function BookingModal({ isOpen, onClose }) {
   const [formData, setFormData] = useState({
@@ -10,11 +11,13 @@ function BookingModal({ isOpen, onClose }) {
   });
 
   const services = [
-    "Haircut",
+    "Haircut & Styling",
     "Beard Grooming",
-    "Hair Color",
+    "Hair Coloring",
     "Complete Grooming",
-    "Facial",
+    "Facial & Skin Care",
+    "Head Massage",
+    "Bridal/Groom Package",
     "Other",
   ];
 
@@ -29,153 +32,176 @@ function BookingModal({ isOpen, onClose }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Validate form
     if (!formData.name || !formData.phone || !formData.service) {
       alert("Please fill in all required fields");
       return;
     }
 
-    // Create WhatsApp message
     const message = `Hi Param Salon! I'd like to book an appointment.\n\n📋 Details:\nName: ${formData.name}\nPhone: ${formData.phone}\nService: ${formData.service}${
       formData.preferredDate ? `\nPreferred Date: ${formData.preferredDate}` : ""
     }${formData.preferredTime ? `\nPreferred Time: ${formData.preferredTime}` : ""}`;
 
-    const whatsappUrl = `https://wa.me/919993962915?text=${encodeURIComponent(
-      message
-    )}`;
-
+    const whatsappUrl = `https://wa.me/919993962915?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, "_blank");
     onClose();
-    setFormData({
-      name: "",
-      phone: "",
-      service: "",
-      preferredDate: "",
-      preferredTime: "",
-    });
+    setFormData({ name: "", phone: "", service: "", preferredDate: "", preferredTime: "" });
   };
 
-  if (!isOpen) return null;
+  const inputClasses =
+    "w-full rounded-xl border border-white/[0.08] bg-white/[0.04] px-4 py-3.5 text-[14px] text-white placeholder:text-[#bdbdbd]/40 transition-all duration-300 focus:border-[#ffcc00]/40 focus:outline-none focus:bg-white/[0.06] focus:shadow-[0_0_20px_rgba(255,204,0,0.08)]";
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm px-4">
-      <div className="w-full max-w-md rounded-3xl border border-accent/30 bg-gradient-to-br from-zinc-900 via-zinc-900 to-zinc-800 p-6 shadow-2xl sm:p-8">
-        {/* Header */}
-        <div className="mb-6">
-          <h2 className="text-2xl font-bold text-white sm:text-3xl">
-            Book Your Appointment
-          </h2>
-          <p className="mt-2 text-sm text-textSecondary">
-            Fill in your details and we'll confirm your slot on WhatsApp
-          </p>
-        </div>
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-md px-4"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+          onClick={onClose}
+        >
+          <motion.div
+            className="relative w-full max-w-md overflow-hidden rounded-3xl border border-white/[0.08] bg-[#0b0b0b]/95 backdrop-blur-2xl shadow-2xl"
+            initial={{ scale: 0.9, opacity: 0, y: 30 }}
+            animate={{ scale: 1, opacity: 1, y: 0 }}
+            exit={{ scale: 0.95, opacity: 0, y: 20 }}
+            transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Top Glow */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 h-[1px] w-3/4 bg-gradient-to-r from-transparent via-[#ffcc00]/50 to-transparent" />
 
-        {/* Form */}
-        <form onSubmit={handleSubmit} className="space-y-4">
-          {/* Name */}
-          <div>
-            <label className="block text-sm font-semibold text-white mb-2">
-              Full Name *
-            </label>
-            <input
-              type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              placeholder="Enter your name"
-              className="w-full rounded-lg border border-white/20 bg-white/5 px-4 py-3 text-white placeholder:text-gray-500 transition focus:border-accent focus:outline-none focus:bg-white/10"
-            />
-          </div>
+            {/* Glow Blob */}
+            <div className="absolute -top-20 left-1/2 -translate-x-1/2 h-40 w-40 rounded-full bg-[#ffcc00]/10 blur-3xl pointer-events-none" />
 
-          {/* Phone */}
-          <div>
-            <label className="block text-sm font-semibold text-white mb-2">
-              Phone Number *
-            </label>
-            <input
-              type="tel"
-              name="phone"
-              value={formData.phone}
-              onChange={handleChange}
-              placeholder="10-digit number"
-              className="w-full rounded-lg border border-white/20 bg-white/5 px-4 py-3 text-white placeholder:text-gray-500 transition focus:border-accent focus:outline-none focus:bg-white/10"
-            />
-          </div>
+            <div className="relative p-7 sm:p-8">
+              {/* Close Button */}
+              <button
+                onClick={onClose}
+                className="absolute right-5 top-5 flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-white/5 text-[#bdbdbd] transition-all duration-300 hover:border-[#ffcc00]/30 hover:text-white cursor-pointer"
+              >
+                ✕
+              </button>
 
-          {/* Service */}
-          <div>
-            <label className="block text-sm font-semibold text-white mb-2">
-              Select Service *
-            </label>
-            <select
-              name="service"
-              value={formData.service}
-              onChange={handleChange}
-              className="w-full rounded-lg border border-white/20 bg-white/5 px-4 py-3 text-white transition focus:border-accent focus:outline-none focus:bg-white/10"
-            >
-              <option value="" className="bg-zinc-900">
-                Choose a service...
-              </option>
-              {services.map((service) => (
-                <option key={service} value={service} className="bg-zinc-900">
-                  {service}
-                </option>
-              ))}
-            </select>
-          </div>
+              {/* Header */}
+              <div className="mb-7">
+                <span className="section-label !text-[10px] !px-3 !py-1 mb-3 inline-block">
+                  Premium Booking
+                </span>
+                <h2 className="font-heading text-2xl font-bold text-white sm:text-3xl">
+                  Book Your <span className="text-gold-gradient">Appointment</span>
+                </h2>
+                <p className="mt-2 text-[13px] font-light text-[#bdbdbd]/70">
+                  Fill in your details and we'll confirm your slot on WhatsApp.
+                </p>
+              </div>
 
-          {/* Preferred Date */}
-          <div>
-            <label className="block text-sm font-semibold text-white mb-2">
-              Preferred Date
-            </label>
-            <input
-              type="date"
-              name="preferredDate"
-              value={formData.preferredDate}
-              onChange={handleChange}
-              className="w-full rounded-lg border border-white/20 bg-white/5 px-4 py-3 text-white transition focus:border-accent focus:outline-none focus:bg-white/10"
-            />
-          </div>
+              {/* Form */}
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div>
+                  <label className="mb-2 block text-[12px] font-semibold uppercase tracking-[0.1em] text-white/80">
+                    Full Name <span className="text-[#ffcc00]">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    placeholder="Enter your name"
+                    className={inputClasses}
+                  />
+                </div>
 
-          {/* Preferred Time */}
-          <div>
-            <label className="block text-sm font-semibold text-white mb-2">
-              Preferred Time
-            </label>
-            <input
-              type="time"
-              name="preferredTime"
-              value={formData.preferredTime}
-              onChange={handleChange}
-              className="w-full rounded-lg border border-white/20 bg-white/5 px-4 py-3 text-white transition focus:border-accent focus:outline-none focus:bg-white/10"
-            />
-          </div>
+                <div>
+                  <label className="mb-2 block text-[12px] font-semibold uppercase tracking-[0.1em] text-white/80">
+                    Phone Number <span className="text-[#ffcc00]">*</span>
+                  </label>
+                  <input
+                    type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    placeholder="10-digit number"
+                    className={inputClasses}
+                  />
+                </div>
 
-          {/* Buttons */}
-          <div className="flex gap-3 pt-4">
-            <button
-              type="button"
-              onClick={onClose}
-              className="flex-1 rounded-lg border border-white/20 px-4 py-3 font-semibold text-white transition hover:bg-white/10"
-            >
-              Cancel
-            </button>
-            <button
-              type="submit"
-              className="flex-1 rounded-lg bg-accent px-4 py-3 font-semibold text-black shadow-lg shadow-accent/30 transition hover:bg-accentHover"
-            >
-              Send via WhatsApp
-            </button>
-          </div>
-        </form>
+                <div>
+                  <label className="mb-2 block text-[12px] font-semibold uppercase tracking-[0.1em] text-white/80">
+                    Select Service <span className="text-[#ffcc00]">*</span>
+                  </label>
+                  <select
+                    name="service"
+                    value={formData.service}
+                    onChange={handleChange}
+                    className={`${inputClasses} cursor-pointer`}
+                  >
+                    <option value="" className="bg-[#111]">
+                      Choose a service...
+                    </option>
+                    {services.map((service) => (
+                      <option key={service} value={service} className="bg-[#111]">
+                        {service}
+                      </option>
+                    ))}
+                  </select>
+                </div>
 
-        {/* Info */}
-        <p className="mt-6 text-center text-xs text-textSecondary">
-          ✓ We're available 9 AM - 10 PM daily
-        </p>
-      </div>
-    </div>
+                <div className="grid grid-cols-2 gap-3">
+                  <div>
+                    <label className="mb-2 block text-[12px] font-semibold uppercase tracking-[0.1em] text-white/80">
+                      Date
+                    </label>
+                    <input
+                      type="date"
+                      name="preferredDate"
+                      value={formData.preferredDate}
+                      onChange={handleChange}
+                      className={inputClasses}
+                    />
+                  </div>
+                  <div>
+                    <label className="mb-2 block text-[12px] font-semibold uppercase tracking-[0.1em] text-white/80">
+                      Time
+                    </label>
+                    <input
+                      type="time"
+                      name="preferredTime"
+                      value={formData.preferredTime}
+                      onChange={handleChange}
+                      className={inputClasses}
+                    />
+                  </div>
+                </div>
+
+                {/* Buttons */}
+                <div className="flex gap-3 pt-3">
+                  <button
+                    type="button"
+                    onClick={onClose}
+                    className="btn-outline flex-1 !py-3.5 !text-[13px] cursor-pointer"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    className="btn-gold flex-1 !py-3.5 !text-[13px] cursor-pointer"
+                  >
+                    Send via WhatsApp
+                  </button>
+                </div>
+              </form>
+
+              {/* Info */}
+              <p className="mt-5 text-center text-[11px] font-light text-[#bdbdbd]/40">
+                ✓ Available 9 AM – 10 PM daily · Instant confirmation
+              </p>
+            </div>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }
 
